@@ -1,0 +1,42 @@
+﻿# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+local.properties
+gradle-app.setting
+
+# Android
+*.apk
+*.aab
+*.ap_
+*.dex
+captures/
+.externalNativeBuild/
+.cxx/
+*.hprof
+
+# 签名密钥：绝不入库
+*.jks
+*.keystore
+keystore.properties
+release.jks
+soda-release.jks
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 项目升级时的本地备份
+.upgrade-backup-*/
+
+# 打包脚本与临时产物
+*.log
+soda_*.png
+
