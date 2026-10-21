@@ -30,7 +30,8 @@ concurrency:
 jobs:
   build:
     name: 构建 Android APK
-    runs-on: ubuntu-latest
+    # R8 full mode 内存占用大，使用 8 核 16GB 的大 runner
+    runs-on: ubuntu-latest-8-cores
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
