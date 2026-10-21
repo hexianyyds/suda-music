@@ -44,12 +44,21 @@ jobs:
       - name: 设置 Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: 安装 Android SDK
-        uses: android-actions/setup-android@v3
+      - name: 接受 Android SDK 许可
+        run: |
+          SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f 2>/dev/null | head -1)
+          if [ -z "$SDKMANAGER" ]; then
+            echo "::error::未找到 sdkmanager"; exit 1
+          fi
+          yes | "$SDKMANAGER" --licenses > /dev/null 2>&1 || true
 
       - name: 安装平台与构建工具
         run: |
-          sdkmanager --install "platforms;android-37" "build-tools;37.0.0" || true
+          SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f | head -1)
+          "$SDKMANAGER" "platforms;android-37" "build-tools;37.0.0" || \
+          "$SDKMANAGER" "platforms;android-37"
+          echo "--- 已安装的平台 ---"
+          ls "$ANDROID_HOME/platforms" || true
 
       - name: 恢复签名密钥
         env:
