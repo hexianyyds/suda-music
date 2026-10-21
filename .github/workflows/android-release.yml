@@ -70,9 +70,13 @@ jobs:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
         run: |
           if [ -n "$KEYSTORE_BASE64" ]; then
-            echo "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/soda-release.jks"
+            # tr 去掉换行/回车，避免 base64 解码失败
+            printf '%s' "$KEYSTORE_BASE64" | tr -d '\r\n' | base64 -d > "$RUNNER_TEMP/soda-release.jks"
+            if [ ! -s "$RUNNER_TEMP/soda-release.jks" ]; then
+              echo "::error::签名密钥解码失败"; exit 1
+            fi
             echo "RELEASE_STORE_FILE=$RUNNER_TEMP/soda-release.jks" >> "$GITHUB_ENV"
-            echo "签名密钥已恢复"
+            echo "签名密钥已恢复 ($(stat -c%s "$RUNNER_TEMP/soda-release.jks") 字节)"
           else
             echo "::warning::未配置 KEYSTORE_BASE64，将产出未签名 APK（仅供测试）"
           fi
