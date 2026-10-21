@@ -100,9 +100,12 @@ dependencies {
     implementation(libs.haze.blur)
     implementation(libs.haze.blur.materials)
     implementation(libs.haze.glass)
+    // 负责把 APK 内的 Baseline Profile 安装到设备，启用 ART 的 AOT2 预编译
+    implementation(libs.androidx.profileinstaller)
     debugImplementation(libs.androidx.ui.tooling)
     testImplementation("junit:junit:4.13.2")
     // 单元测试里 org.json 是 Android stub（抛异常），用真实实现覆盖
     testImplementation("org.json:json:20250107")
 }
+
 

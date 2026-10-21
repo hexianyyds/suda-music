@@ -1,0 +1,38 @@
+# ART Baseline Profile（设备端 AOT2 预编译）
+#
+# 这些类/方法会在应用安装后被 ART 提前编译（AOT），
+# 首次冷启动时无需 JIT，启动与首屏速度明显提升。
+# 格式为 ART 的紧凑 Human-Readable Format（HRF）。
+
+# ---------------- 应用启动 ----------------
+HSPLcom/sodamusic/app/MainActivity;-><init>()V
+Lcom/sodamusic/app/MainActivity;
+HSPLcom/sodamusic/app/SodaMusicApp;->onCreate()V
+Lcom/sodamusic/app/SodaMusicApp;
+HSPLcom/sodamusic/app/SodaMusicApp;-><init>()V
+
+# ---------------- 主题 / 导航骨架 ----------------
+Lcom/sodamusic/app/ui/nav/AppRootKt;
+Lcom/sodamusic/app/ui/theme/ThemeKt;
+Lcom/sodamusic/app/ui/components/GlassSurfaceKt;
+
+# ---------------- 四个主页面 ----------------
+Lcom/sodamusic/app/ui/home/HomeScreenKt;
+Lcom/sodamusic/app/ui/search/SearchScreenKt;
+Lcom/sodamusic/app/ui/mine/MineScreenKt;
+Lcom/sodamusic/app/ui/library/LibraryScreenKt;
+
+# ---------------- 播放页与播放控制 ----------------
+Lcom/sodamusic/app/ui/player/PlayerScreenKt;
+Lcom/sodamusic/app/ui/player/PlayerViewModel;
+Lcom/sodamusic/app/playback/PlayerConnection;
+Lcom/sodamusic/app/playback/PlaybackService;
+Lcom/sodamusic/app/playback/PlaybackBus;
+
+# ---------------- 数据层（首屏必需的解析与持久化） ----------------
+Lcom/sodamusic/app/data/repo/MusicRepository;
+Lcom/sodamusic/app/data/repo/AutoQueue;
+Lcom/sodamusic/app/data/repo/FavoritesManager;
+Lcom/sodamusic/app/data/store/LibraryStore;
+Lcom/sodamusic/app/data/store/SettingsStore;
+Lcom/sodamusic/app/util/LrcParser;
