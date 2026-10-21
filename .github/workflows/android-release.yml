@@ -55,8 +55,13 @@ jobs:
       - name: 安装平台与构建工具
         run: |
           SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f | head -1)
-          "$SDKMANAGER" "platforms;android-37" "build-tools;37.0.0" || \
-          "$SDKMANAGER" "platforms;android-37"
+          # 升级命令行工具，确保能识别 Android 17 的新版本号（android-37.0）
+          "$SDKMANAGER" "cmdline-tools;latest" || true
+          SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -name sdkmanager -type f | sort | tail -1)
+          yes | "$SDKMANAGER" --licenses > /dev/null 2>&1 || true
+          # Android 17 的平台包名为 android-37.0（带小版本号）
+          "$SDKMANAGER" "platforms;android-37.0" "build-tools;37.0.0" || \
+          "$SDKMANAGER" "platforms;android-37" "build-tools;37.0.0" || true
           echo "--- 已安装的平台 ---"
           ls "$ANDROID_HOME/platforms" || true
 
