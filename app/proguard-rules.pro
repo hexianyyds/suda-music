@@ -3,31 +3,19 @@
 -keepattributes *Annotation*, InnerClasses, Signature, RuntimeVisible*Annotations, AnnotationDefault, EnclosingMethod, SourceFile, LineNumberTable
 
 # ==================== kotlinx.serialization ====================
-# 生成的 serializer 是通过 Companion 反射拿到的，必须保留
--keepclassmembers class kotlinx.serialization.json.** { *** Companion; }
--keepclasseswithmembers class kotlinx.serialization.json.** { kotlinx.serialization.KSerializer serializer(...); }
-
--if @kotlinx.serialization.Serializable class **
--keepclassmembers class <1> {
-    static <1>$Companion Companion;
-}
-
--if @kotlinx.serialization.Serializable class ** {
-    static **$* *;
-}
-
--keepclassmembers class <1>$<3> {
+# 只保留我们自己的模型类：
+#   - 模型字段名不能被混淆（否则持久化的队列/收藏/历史读不出来）
+#   - Companion 里的 serializer() 是反序列化入口
+# 注意：不要使用 <1>$<3> 这类通配规则 —— 它会要求 R8 扫描每一个
+# Serializable 类（含 kotlinx.serialization 自身），成倍拖慢混淆。
+-keep,includedescriptorclasses class com.sodamusic.app.data.model.** { *; }
+-keepclassmembers class com.sodamusic.app.data.model.** {
+    *** Companion;
     kotlinx.serialization.KSerializer serializer(...);
 }
-
--if @kotlinx.serialization.Serializable class ** {
-    public static ** INSTANCE;
+-keepclasseswithmembers class com.sodamusic.app.data.model.** {
+    kotlinx.serialization.KSerializer serializer(...);
 }
-
-# 业务模型（队列 / 收藏 / 搜索历史 / 播放列表都靠它序列化）
--keepclassmembers class com.sodamusic.app.data.model.** { *** Companion; }
--keepclasseswithmembers class com.sodamusic.app.data.model.** { kotlinx.serialization.KSerializer serializer(...); }
--keep class com.sodamusic.app.data.model.** { *; }
 
 # ==================== Media3 / ExoPlayer ====================
 # Media3 自带 consumer rules，这里只屏蔽可选依赖的告警
