@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app.data.store
+package com.sodamusic.app.data.store
 
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey

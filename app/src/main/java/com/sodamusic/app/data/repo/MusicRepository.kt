@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app.data.repo
+package com.sodamusic.app.data.repo
 
 import com.sodamusic.app.data.api.CloudflareChallengeException
 import com.sodamusic.app.data.api.GdMusicApi

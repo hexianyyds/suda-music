@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app.data.api
+package com.sodamusic.app.data.api
 
 import com.sodamusic.app.data.model.Song
 import kotlinx.coroutines.Dispatchers

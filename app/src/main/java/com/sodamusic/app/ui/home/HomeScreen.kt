@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app.ui.home
+package com.sodamusic.app.ui.home
 
 import android.widget.Toast
 import androidx.compose.foundation.background

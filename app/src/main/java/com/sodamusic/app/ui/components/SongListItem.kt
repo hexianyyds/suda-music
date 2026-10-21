@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app.ui.components
+package com.sodamusic.app.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column

@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app.ui.mine
+package com.sodamusic.app.ui.mine
 
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult

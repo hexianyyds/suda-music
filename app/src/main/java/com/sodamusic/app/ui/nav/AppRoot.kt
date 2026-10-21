@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app.ui.nav
+package com.sodamusic.app.ui.nav
 
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.AnimatedVisibility

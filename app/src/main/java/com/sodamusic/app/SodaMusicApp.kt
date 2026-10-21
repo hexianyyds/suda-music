@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app
+package com.sodamusic.app
 
 import android.app.Application
 import com.sodamusic.app.data.api.GdMusicApi

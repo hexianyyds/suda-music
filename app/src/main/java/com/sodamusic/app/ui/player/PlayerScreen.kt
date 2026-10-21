@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app.ui.player
+package com.sodamusic.app.ui.player
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn

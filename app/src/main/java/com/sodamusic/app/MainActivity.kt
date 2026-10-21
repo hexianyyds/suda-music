@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app
+package com.sodamusic.app
 
 import android.Manifest
 import android.os.Build

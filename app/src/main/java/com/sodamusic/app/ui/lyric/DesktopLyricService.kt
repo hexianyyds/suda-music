@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app.ui.lyric
+package com.sodamusic.app.ui.lyric
 
 import android.app.Service
 import android.content.Context

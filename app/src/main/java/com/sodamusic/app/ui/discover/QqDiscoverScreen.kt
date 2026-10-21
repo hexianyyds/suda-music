@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app.ui.discover
+package com.sodamusic.app.ui.discover
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

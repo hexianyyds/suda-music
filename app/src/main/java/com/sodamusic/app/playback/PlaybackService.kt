@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app.playback
+package com.sodamusic.app.playback
 
 import android.content.Intent
 import android.os.Bundle

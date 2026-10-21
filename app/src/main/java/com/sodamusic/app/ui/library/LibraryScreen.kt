@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app.ui.library
+package com.sodamusic.app.ui.library
 
 import android.content.ClipData
 import android.content.ClipboardManager

@@ -1,4 +1,4 @@
-﻿package com.sodamusic.app.ui.search
+package com.sodamusic.app.ui.search
 
 import android.widget.Toast
 import androidx.compose.ui.graphics.Brush
