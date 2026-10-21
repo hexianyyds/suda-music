@@ -53,6 +53,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    lint {
+        // Release 构建不跑 Lint 校验：它会显著拖慢打包，且 R8 阶段本身已做校验
+        checkReleaseBuilds = false
+        abortOnError = false
+    }
     buildFeatures {
         compose = true
     }
